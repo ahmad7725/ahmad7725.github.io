@@ -1,69 +1,64 @@
-// state variable demo      
-// ahmad
-// nov 16
+// pickupable primative 
+// ahmad fayed
+// nov 17
 //
 // Extra for Experts:
-// - looking at state variable and fading effect
+// simple application of mouse-movable (pickupable) shapes
 
-
-
-
-
-let onLeft,onRight;
-let leftFade = 0;
-let rightFade = 0; 
-const FADE_SPEED = 10;
-
+// global variable
+let x, y, rSize;
+let rLeft, rRight, rTop, rBottom;  //edge positions of rectangle
+let pickedUp = false;  //are we currently moving the object?
+let mouseOver = false; //are we hovering on the object?
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  onLeft = true;
-  onRight = false;
+  rectMode(CENTER);
+  x = width/2;
+  y = height/2;
+  rSize = 200;  //rHeight will be half of rSize
 }
 
 function draw() {
-  background(220);
-  line(width/2,0, width/2,height);
-  updateCurrentSide();
-  print("Left: "+ onLeft +"\tRight: "+ onRight);
-  renderRectangle();
+  background(0);
+  drawRectangle();
 }
 
-function renderRectangle(){
-  // draw two rectangles of varying fill values on the screen
-  // Left rectangle 
-  if (onLeft){
-    fill(200,47,49,leftFade);
-    leftFade += FADE_SPEED;
-}
-else{
-  fill(255);
-  leftFade = 0;
-}
-// rigth rectangle
-if(onRight){
-  fill(0,255,166);
-}
-else{
-  fill(255);
-}
-rect(width/2,0,width/2,height);
+function drawRectangle(){
+  //renders the rectangle and also checks for mouse interactions
+  updateEdgePositions();
+  print(rLeft + " " + rRight + " " + rTop + " " + rBottom + " " + pickedUp + " " + mouseOver);
 
-
-
-
-
-
-function updateCurrentSide(){
-  // mouse is on the left
-  if(mouseX < width/2){
-    onLeft = true;
-    onRight = false;
+  if(mouseX > rLeft && mouseX < rRight && mouseY > rTop && mouseY < rBottom){
+    fill(220,10,255);
+    mouseOver = true;
   }
   else{
-    // mouse is on the right
-
-    onLeft= false;
-    onRight = true;
+    fill(255);
+    mouseOver = false;
   }
+
+  rect(x,y, rSize, rSize/2);
+}
+
+function updateEdgePositions(){
+  //update the left/right/top/bottom variables for our rectangle
+  rLeft = x - rSize/2;
+  rRight = x + rSize/2;
+  rTop = y - rSize/4;
+  rBottom = y + rSize/4;
+}
+
+
+function mousePressed(){
+  if (mouseOver){
+    pickedUp = true;
+  }
+
+
+}
+
+function mouseReleased(){
+  pickedUp = false;
+
 }
