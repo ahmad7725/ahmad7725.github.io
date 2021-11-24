@@ -67,6 +67,5 @@ function updateCurrentSide(){
   }
 }
 
-}
 
 
