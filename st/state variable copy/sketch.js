@@ -1,16 +1,10 @@
-// Project Title
-// Your Name
-// Date
+// rollover
+// ahmad fayed
+// nov 29
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+// - as the mouse moves through each quadrent, the quadrent fades out 
 
-// Project Title
-// Your Name
-// Date
-//
-// Extra for Experts:
-// - describe what you did to take this project "above and beyond"
 
 let tLeft, tRight,bRight,bLeft;   //Boolean state variables 
 let TleftFade = 0;
@@ -74,41 +68,41 @@ function updateCurrentSide(){
 
 function Fade(){
   if(tLeft){   // the rectangle on top left fades in 
-    TleftFade = 255;
+    TleftFade = 195;
     
   }
   else{
     TleftFade -= FADE_SPEED;
   }
-  fill(0,0,0,TleftFade);
+  fill(165,34,190,TleftFade);
   rect(0,0,width/2,height/2);
 
   if(bLeft){   
-    BleftFade = 255; // rectangle on bottom left fades in
+    BleftFade = 245; // rectangle on bottom left fades in
     
   }
   else{
     BleftFade -= FADE_SPEED;
   }
-  fill(0,0,0,BleftFade);
+  fill(155,64,210,BleftFade);
   rect(0,height/2,width/2,height/2);
 
   if(bRight){ 
-    BrightFade = 255; // rectangle on botton right fades in
+    BrightFade = 125; // rectangle on botton right fades in
   }
   else{
     BrightFade -= FADE_SPEED;
   }
-  fill(0,0,0,BrightFade);
+  fill(225,24,240,BrightFade);
   rect(width/2,height/2,width/2,height/2);
   
   if(tRight){   
-    TrightFade = 255; // rectangle on top right fades in
+    TrightFade = 215; // rectangle on top right fades in
     
   }
   else{
     TrightFade -= FADE_SPEED;
   }
-  fill(0,0,0,TrightFade);
+  fill(125,64,220,TrightFade);
   rect(width/2,0,width/2,height/2);
 }
