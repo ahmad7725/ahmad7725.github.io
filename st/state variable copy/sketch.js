@@ -46,76 +46,69 @@ function updateCurrentSide(){
     tRight = false;
     bLeft = false;
     bRight = false;
-    rect(0,0,width/2,height/2);
   }
   else if(mouseX > height/2 && mouseY < width/2){
     // mouse is on the Top RIGHT
-    rect(width/2,0,width/2,height/2);
     tLeft = false;
     tRight = true;
     bLeft = false;
     bRight = false;
-    fill(0);
   }
   else if ( mouseX < height/2 && mouseY > width/2){ 
     // mouse is on the bottom left
-    rect(0,height/2,width/2,height/2);
     bLeft = true;
     bRight = false;
     tLeft = false;
     tRight = false;
-    fill(0);
   
   }     
 
   else{
     //mouse is on the  Bottom RIGHT
-    rect(width/2,height/2,width/2,height/2);
     tLeft = false;
     tRight = false;
     bRight = true;
     bLeft = false;
-    fill(0);
   }
 }
 
 function Fade(){
   if(tLeft){   // the rectangle on top left fades in 
-    fill(0,0,0,TleftFade);
-    TleftFade += FADE_SPEED;
+    TleftFade = 255;
+    
   }
   else{
-    fill(255);
-    TleftFade = 0;
+    TleftFade -= FADE_SPEED;
   }
+  fill(0,0,0,TleftFade);
   rect(0,0,width/2,height/2);
-if(bLeft){   
-    fill(0,0,0,BleftFade); // rectangle on bottom left fades in
-    BleftFade += FADE_SPEED;
+
+  if(bLeft){   
+    BleftFade = 255; // rectangle on bottom left fades in
+    
   }
   else{
-    fill(255);
-    BleftFade = 0;
+    BleftFade -= FADE_SPEED;
   }
+  fill(0,0,0,BleftFade);
   rect(0,height/2,width/2,height/2);
 
-if(bRight){   
-    fill(0,0,0,BrightFade);// rectangle on botton right fades in
-    BrightFade += FADE_SPEED;
+  if(bRight){ 
+    BrightFade = 255; // rectangle on botton right fades in
   }
   else{
-    fill(255);
-    BrightFade = 0;
+    BrightFade -= FADE_SPEED;
   }
+  fill(0,0,0,BrightFade);
   rect(width/2,height/2,width/2,height/2);
   
   if(tRight){   
-    fill(0,0,0,TrightFade);// rectangle on top right fades in
-    TrightFade += FADE_SPEED;
+    TrightFade = 255; // rectangle on top right fades in
+    
   }
   else{
-    fill(255);
-    TrightFade = 0;
+    TrightFade -= FADE_SPEED;
   }
+  fill(0,0,0,TrightFade);
   rect(width/2,0,width/2,height/2);
 }
