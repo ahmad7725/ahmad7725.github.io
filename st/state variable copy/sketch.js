@@ -33,7 +33,7 @@ function draw() {
 function updateCurrentSide(){
   //update the state variables to represent which side of the canvas
   //the mouse is presently on.
-  if(mouseX < height/2 && mouseY < width/2){
+  if(mouseY < height/2 && mouseX < width/2){
     //mouse is on the TOP LEFT
 
     tLeft = true;
@@ -41,14 +41,14 @@ function updateCurrentSide(){
     bLeft = false;
     bRight = false;
   }
-  else if(mouseX > height/2 && mouseY < width/2){
+  else if(mouseY > height/2 && mouseX < width/2){
     // mouse is on the Top RIGHT
     tLeft = false;
     tRight = true;
     bLeft = false;
     bRight = false;
   }
-  else if ( mouseX < height/2 && mouseY > width/2){ 
+  else if ( mouseY < height/2 && mouseX > width/2){ 
     // mouse is on the bottom left
     bLeft = true;
     bRight = false;
@@ -85,7 +85,7 @@ function Fade(){
     BleftFade -= FADE_SPEED;
   }
   fill(155,64,210,BleftFade);
-  rect(0,height/2,width/2,height/2);
+  rect(width/2,0,width/2,height/2);
 
   if(bRight){ 
     BrightFade = 125; // rectangle on botton right fades in
@@ -104,5 +104,5 @@ function Fade(){
     TrightFade -= FADE_SPEED;
   }
   fill(125,64,220,TrightFade);
-  rect(width/2,0,width/2,height/2);
+  rect(0,height/2,width/2,height/2);
 }
