@@ -101,13 +101,13 @@ class FayedAFish {
 
   }
   move(){
-    this.x += (random(-2,5),random(-2,5));
-    this.y += (random(-2,5),random(-2,5));
+    this.x += (random(-5,5),random(-5,5));
+    this.y += (random(-5,5),random(-5,5));
     if(this.x > width){
-      this.x = 0;
+      this.x = width;
     }
     if(this.y > height){
-      this.y = 0;
+      this.y = height;
     }
   }
   display(){
