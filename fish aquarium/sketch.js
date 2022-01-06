@@ -3,21 +3,21 @@
 // --                                  --
 // --                                  --
 
-let objects = [];
+//let objects = [];
 
 function setup() {
   createCanvas(800, 500);
-  for(let i = 0; i<1; i++){
-    objects.push(new FayedAFish(random(width),random(height)));
-  }
+  // for(let i = 0; i<1; i++){
+  //   objects.push(new FayedAFish(random(width),random(height)));
+  //}
 }
 
 function draw() {
   drawTank();
-  for(let o of objects){
-    o.move();
-    o.display();
-  }
+  // for(let o of objects){
+  //   o.move();
+  //   o.display();
+  // }
 }
 
 //Function to render the background of the tank
@@ -111,8 +111,14 @@ class FayedAFish {
     }
   }
   display(){
-    strokeWeight(4);
-    rect(this.x,this.y,100);
+    for(let i = 0; i<1; i++){
+      objects.push(new FayedAFish(random(width),random(height)));
+
   }
-  
+  for(let o of objects){
+    o.move();
+    o.display();
+  }
+}
+
 }
