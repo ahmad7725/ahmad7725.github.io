@@ -3,21 +3,21 @@
 // --                                  --
 // --                                  --
 
-//let objects = [];
+let objects = [];
 
 function setup() {
   createCanvas(800, 500);
-  // for(let i = 0; i<1; i++){
-  //   objects.push(new FayedAFish(random(width),random(height)));
-  //}
+  for(let i = 0; i<1; i++){
+    objects.push(new FayedAFish(random(width),random(height)));
+  }
 }
 
 function draw() {
   drawTank();
-  // for(let o of objects){
-  //   o.move();
-  //   o.display();
-  // }
+  for(let o of objects){
+    o.move();
+    o.display();
+  }
 }
 
 //Function to render the background of the tank
@@ -27,7 +27,9 @@ function drawTank() {
   fill(220, 195, 100);
   rect(0, height * 0.8, width, height);  //sand bottom
 }
-
+function keyPressed(){
+  objects[0].pos.x += 5;
+}
 
 /** A super class for animated objects 
     Make sure to implement your class AFTER this one */
@@ -91,34 +93,46 @@ Lastname Firstinitial Fish
 i.e  for Sebastion Tate:  class TateSFish
 ******************************************/
 class FayedAFish {
-  objects = [];
 
   constructor(x,y){
     this.x = x;
     this.y = y;
     this.size = 1;
-
-
+    this.pos = createVector(x,y);
+    this.vel = createVector(random(-3,3),random(-1,-5));
+    this.acc = createVector(0,0.2);
   }
   move(){
-    this.x += (random(-5,5),random(-5,5));
-    this.y += (random(-5,5),random(-5,5));
-    if(this.x > width){
-      this.x = width;
-    }
-    if(this.y > height){
-      this.y = height;
-    }
+    print('1');
+    // this.x += (random(-5,5),random(-5,5));
+    // this.y += (random(-5,5),random(-5,5));
+    // if(this.x > width){
+    //   this.x = width;
+    // }
+    // if(this.y > height){
+    //   this.y = height;
+    // }
+    // if(this.x< 0){
+    //   this.x = 0;
+    // }
+    // if(this.y < 0){
+    //   this.y = 0;
+    // }
+    this.vel.add(this.acc);
+    this.pos.add(this.vel);
+    this.vel.limit(5);  //max vel of 5 px/frame
   }
-  display(){
-    for(let i = 0; i<1; i++){
-      objects.push(new FayedAFish(random(width),random(height)));
 
-  }
-  for(let o of objects){
-    o.move();
-    o.display();
-  }
-}
+  // update(){
+  //   this.vel.add(this.acc);
+  //   this.pos.add(this.vel);
+
+  // }
+  display(){
+    stroke(255);
+    strokeWeight(2);
+    fill(255,100);
+    ellipse(this.pos.x,this.pos.y,32);
+  } 
 
 }
