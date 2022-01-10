@@ -94,27 +94,39 @@ class FayedAFish {
     this.y = y;
     this.size = 1;
     this.pos = createVector(x,y);
-    this.vel = createVector(random(-5,5),random(-5,5));
-    this.acc = createVector(random(-5,5),random(-5,5));
+    this.vel = createVector(-1,1);
+    this.acc = createVector(random(-1,1),random(-1,1));
+    this.fishImages = [];
+    this.loadCounter = 0;
+    this.loadingComplete = false;
+    this.fishImages.push(loadImage("assets/fish.png",this.loadedImage()));
+
+  }
+
+  loadedImage(){
+    this.loadCounter++;
+    if(this.loadCounter===2){
+      this.loadingComplete = true;
+    }
   }
   move(){
     print('1');
-    this.x += (random(-5,5),random(-5,5));
-    this.y += (random(-5,5),random(-5,5));
-    if(this.x > width){
-      this.x = width;
+    this.pos.x += (random(-1,1),random(-1,1));
+    this.pos.y += (random(-1,1),random(-1,1));
+    if(this.pos.x > width){
+      this.pos.x = width;
     }
-    if(this.y > height){
-      this.y = height;
+    if(this.pos.y > height){
+      this.pos.y = height;
     }
-    if(this.x< 0){
-      this.x = 1;
+    if(this.pos.x < 0){
+      this.pos.x = 0;
     }
-    if(this.y < 0){
-      this.y = 1;
+    if(this.pos.y < 0){
+      this.pos.y = 0;
     }
-    this.vel.add(this.acc);
-    this.pos.add(this.vel);
+     this.acc.add(this.acc);
+     this.pos.add(this.vel);
     this.vel.limit(5);  //max vel of 5 px/frame
   }
 
