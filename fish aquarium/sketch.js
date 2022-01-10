@@ -1,8 +1,3 @@
-// Fish Aquarium Project
-// -- complete rest of comment header! --
-// --                                  --
-// --                                  --
-
 let objects = [];
 
 function setup() {
@@ -99,35 +94,35 @@ class FayedAFish {
     this.y = y;
     this.size = 1;
     this.pos = createVector(x,y);
-    this.vel = createVector(random(-3,3),random(-1,-5));
-    this.acc = createVector(0,0.2);
+    this.vel = createVector(random(-5,5),random(-5,5));
+    this.acc = createVector(random(-5,5),random(-5,5));
   }
   move(){
     print('1');
-    // this.x += (random(-5,5),random(-5,5));
-    // this.y += (random(-5,5),random(-5,5));
-    // if(this.x > width){
-    //   this.x = width;
-    // }
-    // if(this.y > height){
-    //   this.y = height;
-    // }
-    // if(this.x< 0){
-    //   this.x = 0;
-    // }
-    // if(this.y < 0){
-    //   this.y = 0;
-    // }
+    this.x += (random(-5,5),random(-5,5));
+    this.y += (random(-5,5),random(-5,5));
+    if(this.x > width){
+      this.x = width;
+    }
+    if(this.y > height){
+      this.y = height;
+    }
+    if(this.x< 0){
+      this.x = 1;
+    }
+    if(this.y < 0){
+      this.y = 1;
+    }
     this.vel.add(this.acc);
     this.pos.add(this.vel);
     this.vel.limit(5);  //max vel of 5 px/frame
   }
 
-  // update(){
-  //   this.vel.add(this.acc);
-  //   this.pos.add(this.vel);
+  update(){
+    this.vel.add(this.acc);
+    this.pos.add(this.vel);
 
-  // }
+   }
   display(){
     stroke(255);
     strokeWeight(2);

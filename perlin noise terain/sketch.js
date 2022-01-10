@@ -1,9 +1,9 @@
-// Project Title
-// Your Name
-// Date
+// Pperlin terain
+// ahmad fayed
+// dec 31 2021
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+// - using perlin noise function to generate terains
 
 let rectWidth=1;   //width of each rectangle slice
 let xOff = 0;
@@ -41,10 +41,10 @@ function regularRandomTerrain(){
       place = x;
     }
     
-    rect(x,height, x+rectWidth, height - sectionHeight);
+    rect(x,height, x+rectWidth, height - sectionHeight); // generating the terrain
   }
-  start +=move+0.01;
-  drawFlag(place,height - tallest);
+  start +=move+0.01; // screen panning 
+  drawFlag(place,height - tallest*1.09);
 }
 
 function drawFlag(x,y){
