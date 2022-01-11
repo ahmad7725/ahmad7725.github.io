@@ -4,6 +4,7 @@ function setup() {
   createCanvas(800, 500);
   for(let i = 0; i<1; i++){
     objects.push(new FayedAFish(random(width),random(height)));
+    
   }
 }
 
@@ -111,7 +112,7 @@ class FayedAFish {
   }
   move(){
     print('1');
-    this.pos.x += (random(-1,1),random(-1,1));
+    this.pos.x += (random(-1,5),random(-1,5));
     this.pos.y += (random(-1,1),random(-1,1));
     if(this.pos.x > width){
       this.pos.x = width;
@@ -125,8 +126,8 @@ class FayedAFish {
     if(this.pos.y < 0){
       this.pos.y = 0;
     }
-     this.acc.add(this.acc);
-     this.pos.add(this.vel);
+    this.acc.add(this.acc);
+    this.pos.add(this.vel);
     this.vel.limit(5);  //max vel of 5 px/frame
   }
 
@@ -134,7 +135,7 @@ class FayedAFish {
     this.vel.add(this.acc);
     this.pos.add(this.vel);
 
-   }
+  }
   display(){
     stroke(255);
     strokeWeight(2);
