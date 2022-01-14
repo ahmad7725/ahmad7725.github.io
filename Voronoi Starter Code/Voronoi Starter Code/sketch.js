@@ -1,20 +1,29 @@
 // Movable Marks + Voronoi Diagram
-// 
-//
+//  ahmad fayed 
+// jan 12 , 2022
 
 
 let markers = [];
 let currentlyDragging = false; //global variable flag for 
 //                              if we are currently moving something
 
-let gridSize = 1;
+let gridSize = 5;
 let activeRender = true;
+
+let img;
+let c;
+function preload() {
+  // preload() runs once
+  img = loadImage('assets/SaskatoonSection.png');
+}
 function setup() {
   createCanvas(800, 600);
+  // setup() waits until preload() is done
 }
 
 function draw() {
   background(220);
+  image(img, 0, 0,800,600);
   drawVoronoi();
   for(let m of markers){
     m.move();
@@ -123,6 +132,8 @@ class MovableMarker{
       fill(this.baseColor);
     }
     circle(this.x, this.y, this.diameter);
+    fill(0);
+    text(round(this.regionArea/(width/gridSize * height/gridSize)*100),this.x,this.y + 20);
   }
 
   mouseIsOver(){

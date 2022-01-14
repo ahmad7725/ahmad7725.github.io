@@ -95,7 +95,7 @@ class FayedAFish {
     this.y = y;
     this.size = 1;
     this.pos = createVector(x,y);
-    this.vel = createVector(-1,1);
+    this.vel = createVector(random(-1,1),random(-1,1));
     this.acc = createVector(random(-1,1),random(-1,1));
     this.fishImages = [];
     this.loadCounter = 0;
@@ -112,19 +112,23 @@ class FayedAFish {
   }
   move(){
     print('1');
-    this.pos.x += (random(-1,5),random(-1,5));
+    this.pos.x += (random(-1,1),random(-1,1));
     this.pos.y += (random(-1,1),random(-1,1));
     if(this.pos.x > width){
       this.pos.x = width;
+      this.vel = createVector(random(-1,1),random(-1,1));
     }
     if(this.pos.y > height){
       this.pos.y = height;
+      this.vel = createVector(random(-1,1),random(-1,1));
     }
     if(this.pos.x < 0){
       this.pos.x = 0;
+      this.vel = createVector(random(-1,1),random(-1,1));
     }
     if(this.pos.y < 0){
       this.pos.y = 0;
+      this.vel = createVector(random(-1,1),random(-1,1));
     }
     this.acc.add(this.acc);
     this.pos.add(this.vel);

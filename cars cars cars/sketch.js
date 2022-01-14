@@ -11,7 +11,11 @@ let eastbound = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  frameRate(60)
+  //frameRate(60)\
+  for(let i = 0; i < 20; i++){
+    westbound.push(new Vehicle(random(width),random(height/2.5),0));}
+ for(let i = 0; i < 20; i++){
+    eastbound.push(new Vehicle(random(width),random(height/2,height),1));}
 }
 
 function draw() {
@@ -24,12 +28,6 @@ function draw() {
   }
   for(let i = 0; i <eastbound.length; i++){
     eastbound[i].action();
-  }
-   for(let i = 0; i < 0.5; i++){
-     westbound.push(new Vehicle(random(width),random(height/2.5)));}
-  for(let i = 0; i < 0.5; i++){
-    if(this.dir===1){
-     eastbound.push(new Vehicle(random(width),random(height/2)));}
   }
 
 
@@ -46,17 +44,17 @@ function drawRoad(){
 
 function mouseClicked(){
   if(keyCode === 16){
-    eastbound.push(new Vehicle(random(width),random(height/2)));
+    eastbound.push(new Vehicle(random(width),random(height/2,height),1));
 
   }
-    westbound.push(new Vehicle(random(width),random(height/2.5)));
+    westbound.push(new Vehicle(random(width),random(height/2.5),0));
 
 }
 class Vehicle{
   constructor(x,y,dir){
     this.x = x;
     this.y = y;
-    this.dir = int(random(2));
+    this.dir = dir;
     this.c = color(random(255),random(255),random(255));
     this.type = int(random(2));
     this.pos = createVector(x,y);
@@ -78,7 +76,7 @@ class Vehicle{
     }
      if(this.dir === 1){// moves eastbound
        this.pos.x -= (random(-15,1),random(-15,1));
-       this.pos.y = height/2;
+       //this.pos.y = height/2;
        this.acc.add(this.acc);
     }
     if(this.type ===0){
