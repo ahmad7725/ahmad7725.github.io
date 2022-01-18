@@ -100,13 +100,13 @@ class FayedAFish {
     this.fishImages = [];
     this.loadCounter = 0;
     this.loadingComplete = false;
-    this.fishImages.push(loadImage("assets/fish.png",this.loadedImage()));
+    this.fishImage=(loadImage("assets/fish.png",this.loadedImage()));
 
   }
 
   loadedImage(){
     this.loadCounter++;
-    if(this.loadCounter===2){
+    if(this.loadCounter===1){
       this.loadingComplete = true;
     }
   }
@@ -141,10 +141,14 @@ class FayedAFish {
 
   }
   display(){
+    imageMode(CENTER);
     stroke(255);
     strokeWeight(2);
     fill(255,100);
     ellipse(this.pos.x,this.pos.y,32);
+    if(this.loadingComplete){
+      image(this.fishImage,this.pos.x,this.pos.y,this.fishImage.width*0.2,this.fishImage.height*0.2);
+    }
   } 
 
 }
