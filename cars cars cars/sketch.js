@@ -64,6 +64,29 @@ class Vehicle{
   action(){
     this.display();
     this.move();
+    this.speedUp();
+    this.speedDown();
+  }
+  speedUp(){
+    if(this.dir === 0){// moves west bound 
+      this.pos.x += (random(-15,0),random(-15,0));
+      //this.acc.add(this.acc);
+    }
+      if(this.dir === 1){// moves eastbound 
+        this.pos.x -= (random(-15,0),random(-15,0));
+        
+        //this.acc.add(this.acc);
+      }
+  }
+  speedDown(){
+    if(this.dir === 0){// moves west bound 
+      this.pos.x -= (random(-15,0),random(-15,0));
+      //this.acc.add(this.acc);
+    }
+      if(this.dir === 1){// moves east bound 
+        this.pos.x += (random(-15,0),random(-15,0));
+        //this.acc.add(this.acc);
+      }
   }
   move(){
     this.pos.x += (random(-1,1),random(-1,1));
