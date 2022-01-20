@@ -1,8 +1,13 @@
+// fish aquarium 
+// ahmad fayed
+// jan 19 2022
+// create a sea animal to move in an aquarium 
+
 let objects = [];
 
 function setup() {
   createCanvas(800, 500);
-  for(let i = 0; i<1; i++){
+  for(let i = 0; i<1; i++){ // push only one fish
     objects.push(new FayedAFish(random(width),random(height)));
     
   }
@@ -10,9 +15,11 @@ function setup() {
 
 function draw() {
   drawTank();
-  for(let o of objects){
+  for(let o of objects){ // push the fish and its movements
     o.move();
     o.display();
+ 
+    
   }
 }
 
@@ -94,60 +101,56 @@ class FayedAFish {
     this.x = x;
     this.y = y;
     this.size = 1;
-    this.pos = createVector(x,y);
-    this.vel = createVector(random(-1,1),random(-1,1));
-    this.acc = createVector(random(-1,1),random(-1,1));
+    this.pos = createVector(x,y); 
+    this.vel = createVector(random(-1,1),random(-1,1)); // velocity
+    this.acc = createVector(random(-1,2),random(-1,2)); // acceleration
     this.fishImages = [];
     this.loadCounter = 0;
     this.loadingComplete = false;
-    this.fishImage=(loadImage("assets/fish.png",this.loadedImage()));
+    this.fishImage=(loadImage("assets/fayedAfish.png",this.loadedImage()));
 
   }
 
   loadedImage(){
     this.loadCounter++;
-    if(this.loadCounter===1){
+    if(this.loadCounter===1){ // ask if the image is loaded, if so return true
       this.loadingComplete = true;
     }
   }
   move(){
     print('1');
-    this.pos.x += (random(-1,1),random(-1,1));
-    this.pos.y += (random(-1,1),random(-1,1));
-    if(this.pos.x > width){
+    // this.pos.x += (random(-1,1),random(-1,1));
+    // this.pos.y += (random(-1,1),random(-1,1));
+    if(this.pos.x > width){ // if the fish has gone off on the right of the canvas
       this.pos.x = width;
-      this.vel = createVector(random(-1,1),random(-1,1));
+      this.vel = createVector(random(-1,2),random(-1,1));
     }
-    if(this.pos.y > height){
+    if(this.pos.y > height){ // if the fish has gone off on the top of the canvas
       this.pos.y = height;
-      this.vel = createVector(random(-1,1),random(-1,1));
+      this.vel = createVector(random(-1,2),random(-1,1));
     }
-    if(this.pos.x < 0){
+    if(this.pos.x < 0){  // if the fish has gone off on the left of the canvas
       this.pos.x = 0;
-      this.vel = createVector(random(-1,1),random(-1,1));
+      this.vel = createVector(random(-1,2),random(-1,1));
     }
-    if(this.pos.y < 0){
+    if(this.pos.y < 0){  // if the fish has gone off on the bottom of the canvas
       this.pos.y = 0;
-      this.vel = createVector(random(-1,1),random(-1,1));
+      this.vel = createVector(random(-1,2),random(-1,1));
     }
     this.acc.add(this.acc);
     this.pos.add(this.vel);
     this.vel.limit(5);  //max vel of 5 px/frame
   }
 
-  update(){
-    this.vel.add(this.acc);
-    this.pos.add(this.vel);
-
-  }
   display(){
-    imageMode(CENTER);
+    imageMode(CENTER); // makes the images hitmarker at teh center of the image 
     stroke(255);
     strokeWeight(2);
     fill(255,100);
     ellipse(this.pos.x,this.pos.y,32);
-    if(this.loadingComplete){
-      image(this.fishImage,this.pos.x,this.pos.y,this.fishImage.width*0.2,this.fishImage.height*0.2);
+    if(this.loadingComplete){ // if this.loadingComplete is true, then push image
+      image(this.fishImage,this.pos.x,this.pos.y,this.fishImage.width*0.2,this.fishImage.height*0.2); //
+                                                 // image has been pushed with a height and width of 20%
     }
   } 
 

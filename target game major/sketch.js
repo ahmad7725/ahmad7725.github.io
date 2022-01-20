@@ -24,15 +24,23 @@ function setup() {
 
 function draw() {
   currentGame.play();
+  quickInput();
  
 }
  
-function quickInout(){
+function quickInput(){
   if(keyIsDown(LEFT_ARROW)){
     currentGame.changeAngle(true);
   }
-  else if(keyIsDown(RIGHT_ARROW)){
+  if(keyIsDown(RIGHT_ARROW)){
     currentGame.changeAngle(false);
   }
+  if(keyIsDown(UP_ARROW)){
+    currentGame.changePower(true);
+  }
+  if(keyIsDown(DOWN_ARROW)){
+    currentGame.changePower(false);
+  }
+
 
 }
