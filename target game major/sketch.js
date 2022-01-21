@@ -9,6 +9,7 @@ let baseImage, cannonballImage,targetImage;
 let expolsionImage = [];
 let shotsRemainingImages = [];
 let targetsHitImages = [];
+let smokeImage =[];
 
 let currentGame;
 
@@ -26,6 +27,12 @@ function draw() {
   currentGame.play();
   quickInput();
  
+}
+function keyPressed(){
+  if( key ===" "){
+    currentGame.createShot();
+
+  }
 }
  
 function quickInput(){

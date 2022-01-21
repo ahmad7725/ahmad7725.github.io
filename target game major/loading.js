@@ -5,9 +5,13 @@ function preload(){
   baseImage = loadImage("assets/base.png");
   cannonballImage = loadImage("assets/cannonball.png");
   targetImage = loadImage("assets/target.png");
-
+ 
   for(let i = 1 ; i < 6; i++){
     expolsionImage[i] = loadImage("assets/ex"+i+".png");
+  }
+  for(let i = 1 ; i < 8; i++){
+    smokeImage[i] = loadImage("assets/smoke"+i+".PNG");
+
   }
   for(let i = 0 ; i < 21; i++){
     shotsRemainingImages[i] = loadImage("assets/shots"+i+".png");

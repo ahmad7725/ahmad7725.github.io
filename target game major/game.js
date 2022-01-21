@@ -10,7 +10,32 @@ play(){
     imageMode(CORNER);
     image(backImage,0,0);
 
+    imageMode(CENTER);
+
     // process and draw every cannonball
+    for(let i = 0; i< this.shots.length; i++){
+        let b = this.shots[i];
+        b.move();
+        b.display();
+        b.checkGroundCollision();
+        if(b.getAlive() === false){
+            if(b.getCollisionType()===1){
+                // ground collision case
+                // create spawn a bunch of smoke particles
+                this.shots.splice(i,1);
+                i--;
+                for(let i = 1 ; i < 8; i++){
+                    imageMode(CENTER);
+                    push();
+                    image(smokeImage[i],250,250);
+                    pop();
+                }
+            }
+        }
+    }
+    // process and draw every smoke particle 
+
+    // process and draw every explostion that is active 
 
     // process and draw every smoke particle 
     print(this.cannonPower);
@@ -18,6 +43,12 @@ play(){
     this.displayCannon();
     this.displayPower();
 
+}
+createShot(){
+    print('1');
+    let v = createVector(this.cannonPower * cos(radians(this.cannonAngle)),
+    this.cannonPower * sin(radians(this.cannonAngle)*-1));
+    this.shots.push(new Ball(v));
 }
 displayCannon(){
     imageMode(CENTER);
