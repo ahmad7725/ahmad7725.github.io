@@ -43,20 +43,13 @@ function drawRoad(){
 }
 
 function mouseClicked(){
-  if(keyCode === 16){
+  if(keyIsDown(SHIFT)){
     eastbound.push(new Vehicle(random(width),random(height/2,height),1));
-
-<<<<<<< HEAD
-  }else{
-    westbound.push(new Vehicle(random(width),random(height/2.5),0));
-  }
-
-=======
   }
   else{
     westbound.push(new Vehicle(random(width),random(height/2.5),0));
   }
->>>>>>> 719247f2876ceb839410340de405bba7bb25572b
+
 }
 class Vehicle{s
   constructor(x,y,dir){
@@ -122,10 +115,18 @@ class Vehicle{s
   drawCar(dir){
     fill(this.c);
     rect(this.pos.x,this.pos.y,100,40);
+    rect(this.pos.x+10,this.pos.y+45,10,4);
+    rect(this.pos.x+85,this.pos.y+45,10,4);
+    rect(this.pos.x+85,this.pos.y-10,10,4);
+    rect(this.pos.x+10,this.pos.y-10,10,4);
   }
   drawTruck(dir){
     fill(this.c);
     ellipse(this.pos.x,this.pos.y,100,40);
+    ellipse(this.pos.x+35,this.pos.y+20,10,4);
+    ellipse(this.pos.x+35,this.pos.y-20,10,4);
+    ellipse(this.pos.x-35,this.pos.y-20,10,4);
+    ellipse(this.pos.x-35,this.pos.y+20,10,4);
   }
 
 }
