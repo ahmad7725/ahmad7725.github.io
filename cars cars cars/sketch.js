@@ -46,8 +46,9 @@ function mouseClicked(){
   if(keyCode === 16){
     eastbound.push(new Vehicle(random(width),random(height/2,height),1));
 
-  }
+  }else{
     westbound.push(new Vehicle(random(width),random(height/2.5),0));
+  }
 
 }
 class Vehicle{
