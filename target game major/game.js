@@ -4,6 +4,8 @@ class Game{
     this.cannonAngle = 0;
     this.cannonPower = 10;
     this.shots = [];
+    this.targetX= random(200,1000);
+    this.targetY= random(140,500);
 }
 play(){
     //called once per frame (acts like draw)
@@ -24,13 +26,7 @@ play(){
                 // create spawn a bunch of smoke particles
                 this.shots.splice(i,1);
                 i--;
-                for(let i = 1 ; i < 8; i++){
-                    imageMode(CENTER);
-                    push();
-                    image(smokeImage[i],250,250);
-                    pop();
-                }
-            }
+              }
         }
     }
     // process and draw every smoke particle 
@@ -42,6 +38,12 @@ play(){
     // draw the cannon
     this.displayCannon();
     this.displayPower();
+    // draw the targets 
+    push();
+    image(targetImage, this.targetX,this.targetY);
+    pop();
+    
+
 
 }
 createShot(){
