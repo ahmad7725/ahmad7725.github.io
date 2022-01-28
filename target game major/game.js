@@ -46,6 +46,19 @@ play(){
 
 
 }
+
+
+collide(){
+    for(let i= 0; i< balls.length; i++ ){
+        let d = dist(this.pos.x,this.pos.y,balls[i].pos.y,balls[i].pos.y);
+        if(d< this.radius + balls[i].radius){
+            push();
+            image(targetImage, this.targetX,this.targetY);
+            pop();  
+        }
+
+    }
+}
 createShot(){
     print('1');
     let v = createVector(this.cannonPower * cos(radians(this.cannonAngle)),

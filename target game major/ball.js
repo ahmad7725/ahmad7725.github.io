@@ -1,5 +1,8 @@
+let balls = [];
+
 class Ball{
     constructor(v_){
+        this.radius = 50
         this.pos = createVector(73,525);
         this.velocity = v_;
         this.gravity = createVector(0,0.2);
@@ -7,7 +10,9 @@ class Ball{
         this.collisionType = 0; // 1 - GROUND     2- TARGET 
                                 //0 - NO COLLISION
 
+
     }
+
     move(){
         this.pos.add(this.velocity);
         this.velocity.add(this.gravity);
